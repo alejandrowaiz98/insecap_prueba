@@ -1,0 +1,41 @@
+﻿@page
+@model insecap_prueba.Pages.Students.IndexModel
+@{
+}
+
+<br />
+<h2>List of students</h2>
+<a class="btn btn-prymary btn-sm" href='/Students/Create'> Create student here!</a>
+<table>
+       <thead>
+           <tr>
+            <th>ID</th>
+            <th>RUT</th>
+            <th>Nombre</th> 
+            <th>Fecha de nacimiento</th>
+            <th>Genero</th>
+            <th>Created at</th>
+            <th>Cursos</th>
+            <th>Acciones</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach(var item in Model.studentList)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.rut</td>
+                <td>@item.name</td>
+                <td>@item.birthday</td>
+                <td>@item.gender</td>
+                <td>@item.createdAt</td>
+                <td>@item.courses</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Students/Edit?id=@item.id">Edit student</a>
+                    <a class="btn btn-primary btn-sm" href="/Students/AddCourse?id=@item.id">Add course</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

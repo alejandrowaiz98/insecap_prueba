@@ -1,0 +1,75 @@
+﻿@page
+@model insecap_prueba.Pages.Students.AddCourseModel
+@{
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Sala</th>
+            <th>Profesor</th>
+            <th>Bimestre</th>
+            <th>Año</th>    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.courseList)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.code</td>
+                <td>@item.name</td>
+                <td>@item.classroom</td>
+                <td>@item.teacher</td>
+                <td>@item.bimester</td>
+                <td>@item.year</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rut</th>
+            <th>Nombre</th>
+            <th>Cursos</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.student.id</td>
+                <td>@Model.student.rut</td>
+                <td>@Model.student.name</td>
+                <td>@Model.student.courses</td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Genero</label>
+        <select name="code">
+            @foreach(var item in Model.courseList)
+            {
+                <option value="@item.code">@item.name</option>
+            }
+        </select>
+    </div>
+
+    <div class="row mb-3">
+        <input type="hidden" name="id" value="@Model.student.id" />
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
